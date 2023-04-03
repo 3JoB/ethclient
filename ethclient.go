@@ -38,11 +38,11 @@ type Client struct {
 }
 
 // Dial connects a client to the given URL.
-func Dial(rawurl string) (*Client, error) {
-	return DialContext(context.Background(), rawurl)
+func Dial(rawurl string, options ...rpc.ClientOption) (*Client, error) {
+	return DialContext(context.Background(), rawurl, options...)
 }
 
-func DialContext(ctx context.Context, rawurl string) (*Client, error) {
+func DialContext(ctx context.Context, rawurl string, options ...rpc.ClientOption) (*Client, error) {
 	c, err := rpc.DialContext(ctx, rawurl)
 	if err != nil {
 		return nil, err

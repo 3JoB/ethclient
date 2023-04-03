@@ -174,8 +174,8 @@ func Dial(rawurl string) (*Client, error) {
 //
 // The context is used to cancel or time out the initial connection establishment. It does
 // not affect subsequent interactions with the client.
-func DialContext(ctx context.Context, rawurl string) (*Client, error) {
-	return DialOptions(ctx, rawurl)
+func DialContext(ctx context.Context, rawurl string, options ...ClientOption) (*Client, error) {
+	return DialOptions(ctx, rawurl, options...)
 }
 
 // DialOptions creates a new RPC client for the given URL. You can supply any of the
